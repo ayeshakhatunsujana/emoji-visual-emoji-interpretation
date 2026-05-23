@@ -1,0 +1,19 @@
+# Core data / evaluation
+pandas
+numpy
+scikit-learn
+openpyxl
+tqdm
+matplotlib
+
+# GPT pipeline (OpenAI API) — needs OPENAI_API_KEY
+openai
+pillow
+
+# LLaMA / Qwen local pipelines
+ollama
+torch
+transformers
+accelerate
+sentencepiece
+protobuf
