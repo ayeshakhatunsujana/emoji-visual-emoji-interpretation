@@ -1,0 +1,126 @@
+% =====================================================================
+%  EMOJI / EMNLP 2026 -- Confusion-matrix and per-class result tables
+%  Section 4 (Results).  Generated from the model prediction files in the
+%  project (condition: d_text_plus_emoji_Cvst  =  T + E + C*v).
+%
+%  CONTENTS (4 tables):
+%    Table tab:cm-sarcasm        -- confusion matrices, all 3 models (sarcasm)
+%    Table tab:cm-sentiment      -- confusion matrices, all 3 models (sentiment)
+%    Table tab:sarcasm-allmodels -- per-class P/R/F1, all 3 models (sarcasm)
+%    Table tab:sentiment-allmodels -- per-class P/R/F1, all 3 models (sentiment)
+%
+%  HOW TO USE IN OVERLEAF
+%  ----------------------
+%  1. Copy the PREAMBLE block below into your main .tex preamble
+%     (anywhere before \begin{document}).  Add it only ONCE.
+%  2. Paste the table blocks where you want them in Section 4.
+%  3. Reference them with \ref{...}, e.g. Table~\ref{tab:cm-sarcasm}.
+%  NOTE: all four tables are table* (span both columns of the layout).
+% =====================================================================
+
+% ----------------------- PREAMBLE BLOCK ------------------------------
+% \usepackage[table]{xcolor}   % <-- if xcolor is already loaded, instead
+%                              %     write \usepackage{colortbl} OR pass
+%                              %     the [table] option to your xcolor line
+% \usepackage{booktabs}
+% \usepackage{array}
+% \usepackage{graphicx}        % for \resizebox (usually already loaded)
+%
+% \definecolor{cmblue}{RGB}{37,99,235}
+%
+% % \cmcell{<intensity 0-100>}{<text>} : shades a confusion-matrix cell.
+% % Larger intensity -> darker blue; text turns white once the cell is dark.
+% \newcommand{\cmcell}[2]{%
+%   \cellcolor{cmblue!#1}\ifnum#1>50\textcolor{white}{#2}\else#2\fi}
+% --------------------- END PREAMBLE BLOCK ----------------------------
+
+
+% =====================================================================
+%  PART A -- TWO ROW-NORMALISED CONFUSION-MATRIX TABLES (with colour)
+%  Each groups GPT, LLaMA and Qwen side by side; darker = higher row %.
+% =====================================================================
+
+\begin{table*}[t]
+\centering
+\caption{Row-normalised confusion matrices on the binary sarcasm detection task (ASDT) for all three model families under the smart-visual condition (\texttt{d\_text\_plus\_emoji\_Cvst}, i.e.\ $T{+}E{+}C^{*}_{v}$). Rows are gold labels, columns are predicted labels; each cell reports the raw count and the row-wise percentage, with darker cells indicating higher row-wise percentages.}
+\label{tab:cm-sarcasm}
+\renewcommand{\arraystretch}{1.35}
+\setlength{\tabcolsep}{5pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l cc @{\hspace{1.4em}} cc @{\hspace{1.4em}} cc}
+\toprule
+ & \multicolumn{2}{c}{\textbf{GPT-4o-mini}} & \multicolumn{2}{c}{\textbf{LLaMA-3.1-8B}} & \multicolumn{2}{c}{\textbf{Qwen2.5-3B}} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+ & \textbf{Pred.\ Not Sarcasm} & \textbf{Pred.\ Sarcasm} & \textbf{Pred.\ Not Sarcasm} & \textbf{Pred.\ Sarcasm} & \textbf{Pred.\ Not Sarcasm} & \textbf{Pred.\ Sarcasm} \\
+\midrule
+\textbf{True Not Sarcasm} & \cmcell{69}{66 (69.5\%)} & \cmcell{31}{29 (30.5\%)} & \cmcell{42}{128 (42.2\%)} & \cmcell{58}{175 (57.8\%)} & \cmcell{51}{156 (51.5\%)} & \cmcell{49}{147 (48.5\%)} \\
+\textbf{True Sarcasm} & \cmcell{5}{8 (5.2\%)} & \cmcell{95}{147 (94.8\%)} & \cmcell{4}{5 (3.9\%)} & \cmcell{96}{122 (96.1\%)} & \cmcell{14}{18 (14.2\%)} & \cmcell{86}{109 (85.8\%)} \\
+\bottomrule
+\end{tabular}}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\caption{Row-normalised confusion matrices on the 3-class sentiment classification task (MSAD) for all three model families under the smart-visual condition (\texttt{d\_text\_plus\_emoji\_Cvst}, i.e.\ $T{+}E{+}C^{*}_{v}$). Rows are gold labels, columns are predicted labels; each cell reports the raw count and the row-wise percentage, with darker cells indicating higher row-wise percentages.}
+\label{tab:cm-sentiment}
+\renewcommand{\arraystretch}{1.35}
+\setlength{\tabcolsep}{5pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l ccc @{\hspace{1.4em}} ccc @{\hspace{1.4em}} ccc}
+\toprule
+ & \multicolumn{3}{c}{\textbf{GPT-4o-mini}} & \multicolumn{3}{c}{\textbf{LLaMA-3.1-8B}} & \multicolumn{3}{c}{\textbf{Qwen2.5-3B}} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-10}
+ & \textbf{Pred.\ Negative} & \textbf{Pred.\ Neutral} & \textbf{Pred.\ Positive} & \textbf{Pred.\ Negative} & \textbf{Pred.\ Neutral} & \textbf{Pred.\ Positive} & \textbf{Pred.\ Negative} & \textbf{Pred.\ Neutral} & \textbf{Pred.\ Positive} \\
+\midrule
+\textbf{True Negative} & \cmcell{98}{39 (97.5\%)} & \cmcell{3}{1 (2.5\%)} & \cmcell{0}{0 (0.0\%)} & \cmcell{95}{39 (95.1\%)} & \cmcell{5}{2 (4.9\%)} & \cmcell{0}{0 (0.0\%)} & \cmcell{98}{39 (97.5\%)} & \cmcell{3}{1 (2.5\%)} & \cmcell{0}{0 (0.0\%)} \\
+\textbf{True Neutral} & \cmcell{42}{14 (42.4\%)} & \cmcell{33}{11 (33.3\%)} & \cmcell{24}{8 (24.2\%)} & \cmcell{60}{21 (60.0\%)} & \cmcell{9}{3 (8.6\%)} & \cmcell{31}{11 (31.4\%)} & \cmcell{62}{21 (61.8\%)} & \cmcell{9}{3 (8.8\%)} & \cmcell{29}{10 (29.4\%)} \\
+\textbf{True Positive} & \cmcell{5}{5 (5.4\%)} & \cmcell{7}{6 (6.5\%)} & \cmcell{88}{81 (88.0\%)} & \cmcell{9}{8 (8.5\%)} & \cmcell{2}{2 (2.1\%)} & \cmcell{89}{84 (89.4\%)} & \cmcell{11}{10 (10.9\%)} & \cmcell{0}{0 (0.0\%)} & \cmcell{89}{82 (89.1\%)} \\
+\bottomrule
+\end{tabular}}
+\end{table*}
+
+
+% =====================================================================
+%  PART B -- TWO PER-CLASS SUMMARY TABLES (all models)
+% =====================================================================
+
+\begin{table*}[t]
+\centering
+\caption{Per-class performance on the binary sarcasm detection task (ASDT) for all three model families under the smart-visual condition (\texttt{d\_text\_plus\_emoji\_Cvst}, i.e.\ $T{+}E{+}C^{*}_{v}$). P, R, and F1 denote precision, recall, and F1-score. The best value in each column is shown in \textbf{bold}.}
+\label{tab:sarcasm-allmodels}
+\small
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{l ccc ccc cc}
+\toprule
+& \multicolumn{3}{c}{\textbf{Not Sarcasm}} & \multicolumn{3}{c}{\textbf{Sarcasm}} & & \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+\textbf{Model} & P & R & F1 & P & R & F1 & \textbf{Acc.} & \textbf{Macro-F1} \\
+\midrule
+GPT-4o-mini & 0.8919 & \textbf{0.6947} & \textbf{0.7811} & \textbf{0.8352} & 0.9484 & \textbf{0.8882} & \textbf{0.8520} & \textbf{0.8346} \\
+LLaMA-3.1-8B & \textbf{0.9624} & 0.4224 & 0.5872 & 0.4108 & \textbf{0.9606} & 0.5755 & 0.5814 & 0.5813 \\
+Qwen2.5-3B & 0.8966 & 0.5149 & 0.6541 & 0.4258 & 0.8583 & 0.5692 & 0.6163 & 0.6116 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\caption{Per-class performance on the 3-class sentiment classification task (MSAD) for all three model families under the smart-visual condition (\texttt{d\_text\_plus\_emoji\_Cvst}, i.e.\ $T{+}E{+}C^{*}_{v}$). P, R, and F1 denote precision, recall, and F1-score. The best value in each column is shown in \textbf{bold}.}
+\label{tab:sentiment-allmodels}
+\small
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.2}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l ccc ccc ccc cc}
+\toprule
+& \multicolumn{3}{c}{\textbf{Negative}} & \multicolumn{3}{c}{\textbf{Neutral}} & \multicolumn{3}{c}{\textbf{Positive}} & & \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-10}
+\textbf{Model} & P & R & F1 & P & R & F1 & P & R & F1 & \textbf{Acc.} & \textbf{Macro-F1} \\
+\midrule
+GPT-4o-mini & \textbf{0.6724} & \textbf{0.9750} & \textbf{0.7959} & 0.6111 & \textbf{0.3333} & \textbf{0.4314} & \textbf{0.9101} & 0.8804 & \textbf{0.8950} & \textbf{0.7939} & \textbf{0.7074} \\
+LLaMA-3.1-8B & 0.5735 & 0.9512 & 0.7156 & 0.4286 & 0.0857 & 0.1429 & 0.8842 & \textbf{0.8936} & 0.8889 & 0.7412 & 0.5824 \\
+Qwen2.5-3B & 0.5571 & \textbf{0.9750} & 0.7091 & \textbf{0.7500} & 0.0882 & 0.1579 & 0.8913 & 0.8913 & 0.8913 & 0.7470 & 0.5861 \\
+\bottomrule
+\end{tabular}}
+\end{table*}
