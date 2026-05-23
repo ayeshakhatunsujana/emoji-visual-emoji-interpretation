@@ -1,0 +1,85 @@
+\begin{table*}[t]
+\centering
+\caption{Confusion matrices on the binary sarcasm detection task (ASDT) for all three model families under the textual (Unicode-name) caption condition ($T{+}E{+}C_t$). Rows are gold labels and columns are predicted labels; each cell reports the row-wise percentage, with darker cells indicating higher percentages.}
+\label{tab:cm-sarcasm-ct}
+\renewcommand{\arraystretch}{1.35}
+\setlength{\tabcolsep}{5pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l cc @{\hspace{1.4em}} cc @{\hspace{1.4em}} cc}
+\toprule
+ & \multicolumn{2}{c}{\textbf{GPT-4o-mini}} 
+ & \multicolumn{2}{c}{\textbf{LLaMA-3.1-8B}} 
+ & \multicolumn{2}{c}{\textbf{Qwen2.5-3B}} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+ & \textbf{Pred.\ Not Sarcasm} & \textbf{Pred.\ Sarcasm}
+ & \textbf{Pred.\ Not Sarcasm} & \textbf{Pred.\ Sarcasm}
+ & \textbf{Pred.\ Not Sarcasm} & \textbf{Pred.\ Sarcasm} \\
+\midrule
+\textbf{True Not Sarcasm}
+& \cmcell{69}{69.5\%}
+& \cmcell{31}{30.5\%}
+& \cmcell{30}{30.4\%}
+& \cmcell{70}{69.6\%}
+& \cmcell{55}{55.1\%}
+& \cmcell{45}{44.9\%} \\
+\textbf{True Sarcasm}
+& \cmcell{3}{3.2\%}
+& \cmcell{97}{96.8\%}
+& \cmcell{3}{3.1\%}
+& \cmcell{97}{96.9\%}
+& \cmcell{17}{16.5\%}
+& \cmcell{83}{83.5\%} \\
+\bottomrule
+\end{tabular}}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\caption{Confusion matrices on the 3-class sentiment classification task (MSAD) for all three model families under the textual (Unicode-name) caption condition ($T{+}E{+}C_t$). Rows are gold labels and columns are predicted labels; each cell reports the row-wise percentage, with darker cells indicating higher percentages.}
+\label{tab:cm-sentiment-ct}
+\renewcommand{\arraystretch}{1.35}
+\setlength{\tabcolsep}{5pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l ccc @{\hspace{1.4em}} ccc @{\hspace{1.4em}} ccc}
+\toprule
+ & \multicolumn{3}{c}{\textbf{GPT-4o-mini}} 
+ & \multicolumn{3}{c}{\textbf{LLaMA-3.1-8B}} 
+ & \multicolumn{3}{c}{\textbf{Qwen2.5-3B}} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-10}
+ & \textbf{Pred.\ Neg.} & \textbf{Pred.\ Neu.} & \textbf{Pred.\ Pos.}
+ & \textbf{Pred.\ Neg.} & \textbf{Pred.\ Neu.} & \textbf{Pred.\ Pos.}
+ & \textbf{Pred.\ Neg.} & \textbf{Pred.\ Neu.} & \textbf{Pred.\ Pos.} \\
+\midrule
+\textbf{True Negative}
+& \cmcell{98}{97.5\%}
+& \cmcell{3}{2.5\%}
+& \cmcell{0}{0.0\%}
+& \cmcell{100}{100.0\%}
+& \cmcell{0}{0.0\%}
+& \cmcell{0}{0.0\%}
+& \cmcell{100}{100.0\%}
+& \cmcell{0}{0.0\%}
+& \cmcell{0}{0.0\%} \\
+\textbf{True Neutral}
+& \cmcell{42}{42.4\%}
+& \cmcell{30}{30.3\%}
+& \cmcell{27}{27.3\%}
+& \cmcell{63}{62.9\%}
+& \cmcell{3}{2.9\%}
+& \cmcell{34}{34.3\%}
+& \cmcell{62}{61.8\%}
+& \cmcell{9}{8.8\%}
+& \cmcell{29}{29.4\%} \\
+\textbf{True Positive}
+& \cmcell{8}{7.6\%}
+& \cmcell{5}{5.4\%}
+& \cmcell{87}{87.0\%}
+& \cmcell{13}{12.8\%}
+& \cmcell{0}{0.0\%}
+& \cmcell{87}{87.2\%}
+& \cmcell{10}{9.8\%}
+& \cmcell{1}{1.1\%}
+& \cmcell{89}{89.1\%} \\
+\bottomrule
+\end{tabular}}
+\end{table*}
